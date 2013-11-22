@@ -1,0 +1,28 @@
+{
+  "name": "leaflet-interact-intent",
+  "version": "0.0.1",
+  "description": "Interact with a map when a user intends it.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": "git@github.com:tristen/leaflet-interact-intent.git",
+  "keywords": [
+    "leaflet",
+    "interaction",
+    "map"
+  ],
+  "author": "Tristen <tristen@tristen.ca>",
+  "license": "BSD",
+  "dependencies": {
+    "hoverintent": "~0.2.1"
+  },
+  "devDependencies": {
+    "uglify-js": "2.4.3",
+    "browserify": "2.35.4",
+    "jshint": "2.3.0"
+  },
+  "scripts": {
+    "test": "jshint index.js"
+  }
+}
