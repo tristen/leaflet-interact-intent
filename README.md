@@ -1,4 +1,4 @@
-## Interact intent: A plugin for Leaflet.
+## Interact intent: a plugin for Leaflet.
 
 This plugin attempts to enable map interaction when a user wants to interacts
 with a map. Page scrolling should work without unintentionaly zooming when a
