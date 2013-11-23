@@ -9,10 +9,9 @@
 <style>
   body {
     font:15px/22px 'Helvetica Neue';
-    background:#f8f8f8;
+    background:#f3f3f3;
     color:#404040;
     margin:0;
-    padding:40px 0;
     }
   h1 {
     font-size:40px;
@@ -20,12 +19,14 @@
     font-weight:500;
     letter-spacing:-1px;
     }
-  h3 { font-size:26px; line-height:40px; font-weight:300; }
+  h3 { font-size:22px; line-height:38px; font-weight:300; }
   a {color:#404040; font-weight:bold;}
   p {margin:0 0 30px; }
+  p:last-child {margin:0; }
   .center {text-align:center;}
   .space-bottom { margin-bottom:20px; }
-  .demo {background:#fff; padding:40px; border:1px solid #ddd; margin:0 0 20px;  }
+  .demo {background:#fff; margin:0 0 60px;  }
+  .box { padding:40px; }
   .limiter {
     width:580px;
     margin:0 auto;
@@ -40,15 +41,13 @@
 </head>
 <body>
   <div class='limiter'>
-
-    <div class='space-bottom'>
-      <h1>Interact intent: a plugin for Leaflet</h1>
-      <h3>This plugin attempts to enable map interaction when a user wants to interacts with a map. Page scrolling should work without unintentionaly zooming when a map is reached on a page.</h3>
+    <div class='box'>
+      <h1>Interact intent:<br /> a plugin for Leaflet</h1>
+      <h3>Interact intent attempts to only enable map interaction when a user wants it. Page scrolling should otherwise work without unintentionaly zooming when a map is reached on a page.</h3>
+      <p>Scroll down the page to demo or go ahead &amp; <a href='//github.com/tristen/leaflet-interact-intent'>Download on GitHub</a>.
     </div>
 
-    <p>Want to see it in action? Scroll down the page!</p>
-
-    <div class='demo'>
+    <div class='box demo'>
     <p>
       Proin at eros non eros adipiscing mollis. Donec semper turpis sed diam. Sed consequat ligula nec tortor. Integer eget sem. Ut vitae enim eu est vehicula gravida. Morbi ipsum ipsum, porta nec, tempor id, auctor vitae, purus. Pellentesque neque. Nulla luctus erat vitae libero. Integer nec enim. Phasellus aliquam enim et tortor. Quisque aliquet, quam elementum condimentum feugiat, tellus odio consectetuer wisi, vel nonummy sem neque in elit. Curabitur eleifend wisi iaculis ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non velit non ligula laoreet ultrices. Praesent ultricies facilisis nisl. Vivamus luctus elit sit amet mi. Phasellus pellentesque, erat eget elementum volutpat, dolor nisl porta neque, vitae sodales ipsum nibh in ligula. Maecenas mattis pulvinar diam. Curabitur sed leo.
     </p>
@@ -66,8 +65,6 @@
       Proin at eros non eros adipiscing mollis. Donec semper turpis sed diam. Sed consequat ligula nec tortor. Integer eget sem. Ut vitae enim eu est vehicula gravida. Morbi ipsum ipsum, porta nec, tempor id, auctor vitae, purus. Pellentesque neque. Nulla luctus erat vitae libero. Integer nec enim. Phasellus aliquam enim et tortor. Quisque aliquet, quam elementum condimentum feugiat, tellus odio consectetuer wisi, vel nonummy sem neque in elit. Curabitur eleifend wisi iaculis ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non velit non ligula laoreet ultrices. Praesent ultricies facilisis nisl. Vivamus luctus elit sit amet mi. Phasellus pellentesque, erat eget elementum volutpat, dolor nisl porta neque, vitae sodales ipsum nibh in ligula. Maecenas mattis pulvinar diam. Curabitur sed leo.
     </p>
     </div>
-
-    <p><a href='//github.com/tristen/leaflet-interact-intent'>Download on GitHub</a></p>
     <script src='dist/leaflet-interact-intent.js'></script>
   </div>
   <script>
