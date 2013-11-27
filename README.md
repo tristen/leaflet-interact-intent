@@ -9,8 +9,19 @@ Want to see it in action? [Check out the demo](http://tristen.ca/leaflet-interac
 ### Usage
 
 ``` js
-var map = L.map('map'); 
+var map = L.map('map');
 new leafletInteractIntent().addTo(map)
+```
+
+### Options
+
+You can also pass an option to trigger interaction on click.
+
+``` js
+var map = L.map('map');
+new leafletInteractIntent({
+    clicktoplay: true
+}).addTo(map)
 ```
 
 ### Building

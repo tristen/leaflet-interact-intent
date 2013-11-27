@@ -1,6 +1,10 @@
 var hoverintent = require('hoverintent');
 
 module.exports = window.L.Control.extend({
+    options: {
+        clicktoplay: false
+    },
+
     onAdd: function(map) {
         var opts = {
             interval: 200
@@ -8,16 +12,20 @@ module.exports = window.L.Control.extend({
 
         var container = L.DomUtil.create('div', 'interaction-intent-control');
         var mask = map._createPane('leaflet-mask', map._container);
+        if (this.options.clicktoplay) L.DomUtil.addClass(mask, 'leaflet-playback');
 
         L.DomEvent.disableScrollPropagation(mask);
-        mask.style.cssText = 'position:absolute;z-index:1000;width:100%;height:100%;';
 
         hoverintent(map._container, function() {
-            mask.style.display = 'none';
+            if (!L.DomUtil.hasClass(mask, 'leaflet-playback')) mask.style.display = 'none';
         }, function() {
             mask.style.display = 'block';
         }).options(opts);
 
+        L.DomEvent.addListener(mask, 'click', function() {
+            L.DomUtil.removeClass(mask, 'leaflet-playback');
+            mask.style.display = 'none';
+        });
         return container;
     }
 });

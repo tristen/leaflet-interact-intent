@@ -4,13 +4,17 @@ BROWSERIFY = node_modules/.bin/browserify
 
 all: \
 	$(shell npm install && mkdir -p dist) \
+	dist/leaflet-interact-intent.css \
 	dist/leaflet-interact-intent.js \
 	dist/leaflet-interact-intent.min.js
 
 clean:
 	rm -f dist/*
 
-dist/leaflet-interact-intent.js: index.js 
+dist/leaflet-interact-intent.css: index.css
+	cp index.css dist/leaflet-interact-intent.css
+
+dist/leaflet-interact-intent.js: index.js
 	$(BROWSERIFY) -s leafletInteractIntent index.js > dist/leaflet-interact-intent.js
 
 dist/leaflet-interact-intent.min.js: dist/leaflet-interact-intent.js

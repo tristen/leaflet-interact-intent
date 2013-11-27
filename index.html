@@ -6,6 +6,9 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
 <script src='//api.tiles.mapbox.com/mapbox.js/v1.5.0/mapbox.js'></script>
 <link href='//api.tiles.mapbox.com/mapbox.js/v1.5.0/mapbox.css' rel='stylesheet' />
+
+<script src='dist/leaflet-interact-intent.js'></script>
+<link href='dist/leaflet-interact-intent.css' rel='stylesheet' />
 <style>
   body {
     font:15px/22px 'Helvetica Neue';
@@ -23,6 +26,15 @@
   a {color:#404040; font-weight:bold;}
   p {margin:0 0 30px; }
   p:last-child {margin:0; }
+  code {
+    background:rgba(0,0,0,0.025);
+    color:rgba(0,0,0,.5);
+    font-family:Menlo, Bitstream Vera Sans Mono, Monaco, Consolas, monospace;
+    font-size:12px;
+    line-height:20px;
+    padding:3px;
+    border-radius: 3px;
+    }
   .center {text-align:center;}
   .space-bottom { margin-bottom:20px; }
   .demo {background:#fff; margin:0 0 60px;  }
@@ -31,7 +43,7 @@
     width:580px;
     margin:0 auto;
     }
-  #map {
+  .map {
     background:#73b5e5;
     width:100%;
     height:400px;
@@ -51,13 +63,15 @@
     <p>
       Proin at eros non eros adipiscing mollis. Donec semper turpis sed diam. Sed consequat ligula nec tortor. Integer eget sem. Ut vitae enim eu est vehicula gravida. Morbi ipsum ipsum, porta nec, tempor id, auctor vitae, purus. Pellentesque neque. Nulla luctus erat vitae libero. Integer nec enim. Phasellus aliquam enim et tortor. Quisque aliquet, quam elementum condimentum feugiat, tellus odio consectetuer wisi, vel nonummy sem neque in elit. Curabitur eleifend wisi iaculis ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non velit non ligula laoreet ultrices. Praesent ultricies facilisis nisl. Vivamus luctus elit sit amet mi. Phasellus pellentesque, erat eget elementum volutpat, dolor nisl porta neque, vitae sodales ipsum nibh in ligula. Maecenas mattis pulvinar diam. Curabitur sed leo.
     </p>
-    <div id='map'></div>
+    <div id='map' class='map'></div>
     <p>
       Proin at eros non eros adipiscing mollis. Donec semper turpis sed diam. Sed consequat ligula nec tortor. Integer eget sem. Ut vitae enim eu est vehicula gravida. Morbi ipsum ipsum, porta nec, tempor id, auctor vitae, purus. Pellentesque neque. Nulla luctus erat vitae libero. Integer nec enim. Phasellus aliquam enim et tortor. Quisque aliquet, quam elementum condimentum feugiat, tellus odio consectetuer wisi, vel nonummy sem neque in elit. Curabitur eleifend wisi iaculis ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non velit non ligula laoreet ultrices. Praesent ultricies facilisis nisl. Vivamus luctus elit sit amet mi. Phasellus pellentesque, erat eget elementum volutpat, dolor nisl porta neque, vitae sodales ipsum nibh in ligula. Maecenas mattis pulvinar diam. Curabitur sed leo.
     </p>
     <p>
       Proin at eros non eros adipiscing mollis. Donec semper turpis sed diam. Sed consequat ligula nec tortor. Integer eget sem. Ut vitae enim eu est vehicula gravida. Morbi ipsum ipsum, porta nec, tempor id, auctor vitae, purus. Pellentesque neque. Nulla luctus erat vitae libero. Integer nec enim. Phasellus aliquam enim et tortor. Quisque aliquet, quam elementum condimentum feugiat, tellus odio consectetuer wisi, vel nonummy sem neque in elit. Curabitur eleifend wisi iaculis ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non velit non ligula laoreet ultrices. Praesent ultricies facilisis nisl. Vivamus luctus elit sit amet mi. Phasellus pellentesque, erat eget elementum volutpat, dolor nisl porta neque, vitae sodales ipsum nibh in ligula. Maecenas mattis pulvinar diam. Curabitur sed leo.
     </p>
+    <p>You can also pass <code>clicktoplay:true</code> as an option to trigger interaction on click. <a href='https://github.com/tristen/leaflet-interact-intent#options'>Learn more in README</a>.</p>
+    <div id='map-clicktoplay' class='map'></div>
     <p>
       Proin at eros non eros adipiscing mollis. Donec semper turpis sed diam. Sed consequat ligula nec tortor. Integer eget sem. Ut vitae enim eu est vehicula gravida. Morbi ipsum ipsum, porta nec, tempor id, auctor vitae, purus. Pellentesque neque. Nulla luctus erat vitae libero. Integer nec enim. Phasellus aliquam enim et tortor. Quisque aliquet, quam elementum condimentum feugiat, tellus odio consectetuer wisi, vel nonummy sem neque in elit. Curabitur eleifend wisi iaculis ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non velit non ligula laoreet ultrices. Praesent ultricies facilisis nisl. Vivamus luctus elit sit amet mi. Phasellus pellentesque, erat eget elementum volutpat, dolor nisl porta neque, vitae sodales ipsum nibh in ligula. Maecenas mattis pulvinar diam. Curabitur sed leo.
     </p>
@@ -65,11 +79,15 @@
       Proin at eros non eros adipiscing mollis. Donec semper turpis sed diam. Sed consequat ligula nec tortor. Integer eget sem. Ut vitae enim eu est vehicula gravida. Morbi ipsum ipsum, porta nec, tempor id, auctor vitae, purus. Pellentesque neque. Nulla luctus erat vitae libero. Integer nec enim. Phasellus aliquam enim et tortor. Quisque aliquet, quam elementum condimentum feugiat, tellus odio consectetuer wisi, vel nonummy sem neque in elit. Curabitur eleifend wisi iaculis ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non velit non ligula laoreet ultrices. Praesent ultricies facilisis nisl. Vivamus luctus elit sit amet mi. Phasellus pellentesque, erat eget elementum volutpat, dolor nisl porta neque, vitae sodales ipsum nibh in ligula. Maecenas mattis pulvinar diam. Curabitur sed leo.
     </p>
     </div>
-    <script src='dist/leaflet-interact-intent.js'></script>
   </div>
   <script>
     var map = L.mapbox.map('map', 'tristen.map-ixqro653').setView([43.6502, -79.3814], 13);
     new leafletInteractIntent().addTo(map);
+
+    var map2 = L.mapbox.map('map-clicktoplay', 'tristen.map-ixqro653').setView([43.6502, -79.3814], 13);
+    new leafletInteractIntent({
+      clicktoplay: true
+    }).addTo(map2);
   </script>
 </body>
 </html>
