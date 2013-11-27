@@ -8,9 +8,14 @@ Want to see it in action? [Check out the demo](http://tristen.ca/leaflet-interac
 
 ### Usage
 
-``` js
-var map = L.map('map');
-new leafletInteractIntent().addTo(map)
+``` html
+<link href='leaflet-interact-intent.css' rel='stylesheet' />
+<script src='leaflet-interact-intent.js'></script>
+
+<script>
+  var map = L.map('map');
+  new leafletInteractIntent().addTo(map)
+</script>
 ```
 
 ### Options
